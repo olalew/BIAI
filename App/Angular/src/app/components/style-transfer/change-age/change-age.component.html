@@ -1,0 +1,60 @@
+<section id="style-transfer" style="background-color: rgb(18, 41, 83);">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col offset-lg-8 text-center mx-auto">
+                <h2 class="text-white section-heading">Konwerter Wieku</h2>
+                <hr class="light my-4">
+                <p class="text-faded mb-4">
+                    CycleGAN pozwala na translację pomiędzy zdjęciami. Mechanizm dwóch klasyfikatorów oraz generatorów pozwala na to, że
+                    dwie sieci wzajemnie się uczą. Klasyfikatory mają za zadanie stwierdzić czy obraz pochodzi od generatora czy jest rzeczywistym obrazem.
+                    Za to generatory mają za zadanie aby wprowadzić klasyfikatory w błąd.
+                    Klasyfikator i generator jednocześnie się uczą wzajemnie od siebie co powoduje, że po długim treningu jesteśmy w stanie
+                    zdobywać spektakularne rezultaty.
+                </p>
+                <div class="row pt-4">
+                    <div class="col-md-6 col-sm-12 text-center">
+                        <img src="assets/img/age/original.png" style="height: 350px;" />
+                        <p class="text-faded mb-4 mt-2">Oryginalne zdjęcie przed konwersją</p>
+                    </div>
+                    <div class="col-md-6 col-sm-12 text-center">
+                        <img src="assets/img/age/result.jpeg" style="height: 350px;" />
+                        <p class="text-faded mb-4 mt-2">Młodsza wersja osoby ze zdjęcia</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="style-transfer" style="background-color: rgb(49, 101, 199);">
+    <!-- style="background-image: url('assets/img/unsplash.jpg')"-->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col offset-lg-8 text-center mx-auto">
+                <h2 class="text-white section-heading">Graj z CycleGAN</h2>
+                <hr class="light my-4">
+                <p class="text-faded mb-4">Zagrajmy z CycleGAN. Poniższa aplikacja pozwala na zrobienie sobie selfi, oraz zaprezentowanie siebie jako młodszej lub starszej osoby. 
+                    Zrób sobie selfie, wybierz tryb i zobaczmy jak poradzi sobie z tym Data Science.
+                </p>
+
+                <button class="btn btn-primary mb-0" (click)="transferStyle()">Zrób zdjęcie i generuj wynik</button>
+            </div>
+        </div>
+
+        <div class="row pt-4 mt-4" *ngIf="displayImage">
+            <div class="col-md-6 col-sm-12 text-center ">
+                <img [src]="image" style="height: 350px;"  *ngIf="!byName"/>
+                <img src="assets/img/transfer/{{name}}.jpg" style="height: 350px;" *ngIf="byName" />
+                <p class="text-faded mb-4 mt-2">Zdjęcie</p>
+            </div>
+            <div class="col-md-6 col-sm-12 text-center">
+                <img [src]="path" style="height: 350px" />
+                <p class="text-faded mt-2 text-center">
+                    Wynik
+                </p>
+                <a download="result.jpg" class="btn btn-primary mb-0" [href]="path">Pobierz</a>
+            </div>
+        </div>
+    </div>
+</section>
